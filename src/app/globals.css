@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+
+  /* Wanderly brand — deep ocean teal */
+  --color-brand-50: #f0f9f8;
+  --color-brand-100: #d5efed;
+  --color-brand-200: #aededb;
+  --color-brand-300: #7cc6c3;
+  --color-brand-400: #4da8a6;
+  --color-brand-500: #338c8b;
+  --color-brand-600: #257170;
+  --color-brand-700: #215b5b;
+  --color-brand-800: #1e4a4a;
+  --color-brand-900: #0f3535;
+  --color-brand-950: #082121;
+
+  /* Warm accent — sunset coral, used sparingly */
+  --color-accent-400: #f2865e;
+  --color-accent-500: #e86a3e;
+  --color-accent-600: #d5532a;
+
+  /* Warm paper background */
+  --color-paper: #faf9f6;
+  --color-ink: #16211f;
+
+  --shadow-card: 0 1px 2px rgb(22 33 31 / 0.05), 0 4px 16px -4px rgb(22 33 31 / 0.08);
+  --shadow-card-hover: 0 2px 4px rgb(22 33 31 / 0.06), 0 12px 32px -8px rgb(22 33 31 / 0.16);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-feature-settings: "cv11", "ss01";
+}
+
+::selection {
+  background: var(--color-brand-200);
+}
+
+/* Focus visibility for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #eceae5 25%, #f5f3ee 50%, #eceae5 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* Subtle rise-in used sparingly */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-rise {
+  animation: rise 0.4s ease-out both;
+}
+
+/* Card hover */
+.card-hover {
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+.card-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Hide scrollbar for horizontal scrollers */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Leaflet fixes */
+.leaflet-container {
+  font-family: var(--font-sans);
+  z-index: 0;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: var(--shadow-card-hover);
+}
