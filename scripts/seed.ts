@@ -14,9 +14,14 @@ import { sql } from "drizzle-orm";
 import { randomBytes, scryptSync } from "crypto";
 import * as s from "../src/db/schema";
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, });
-const db = drizzle(pool, { schema: s });
+const url = new URL(process.env.DATABASE_URL!);
+url.searchParams.delete("sslmode");
 
+const pool = new Pool({
+  connectionString: url.toString(),
+  ssl: { rejectUnauthorized: false },
+});
+const db = drizzle(pool, { schema: s });
 function hash(password: string) {
   const salt = randomBytes(16).toString("hex");
   return `${salt}:${scryptSync(password, salt, 64).toString("hex")}`;
