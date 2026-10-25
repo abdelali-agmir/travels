@@ -2,7 +2,7 @@
   "dialect": "postgresql",
   "schema": "./src/db/schema.ts",
   "dbCredentials": {
-    "url": "postgres://avnadmin:AVNS__6TSB4zaRoQ4a5hX7Gx@pg-814ef8-abdelaliagmir.j.aivencloud.com:18021/defaultdb?sslmode=require"
+    "url": "postgres://avnadmin:AVNS__6TSB4zaRoQ4a5hX7Gx@pg-814ef8-abdelaliagmir.j.aivencloud.com:18021/defaultdb"
   }
 }
 
