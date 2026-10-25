@@ -14,10 +14,7 @@ import { sql } from "drizzle-orm";
 import { randomBytes, scryptSync } from "crypto";
 import * as s from "../src/db/schema";
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: {
-    ca: process.env.DATABASE_CA_CERT,
-    rejectUnauthorized: true,
-  }, });
+const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false }, });
 const db = drizzle(pool, { schema: s });
 
 function hash(password: string) {
